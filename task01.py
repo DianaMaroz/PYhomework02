@@ -15,7 +15,17 @@ def sum_digit_for_int(num):
 
 print(f'Сумма цифр числа {number} равна {sum_digit_for_int(number_int)}')
 
-#без использования строковых методов
-number_float = float(input("Введите вещественное число: "))
+#без использования строковых методов, зато с использованием костылей
+
+number_float = abs(float(input("Введите вещественное число: ")))
+if int(number_float) > 0:
+    while number_float - int(number_float) > 0:
+        number_float *= 10
+else:
+    number_float += 1
+    while number_float - int(number_float) > 0:
+        number_float *= 10
+    number_float -= 1
+print(f'Сумма цифр числа {number} равна {int(sum_digit_for_int(number_float))}')
 
 
